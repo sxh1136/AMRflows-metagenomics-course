@@ -1,0 +1,50 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "AMRflows Metagenomic Data Analysis Course"
+  description: "AMRflows Metagenomic Data Analysis Course"
+
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2023, Siu Fung Stanley Ho"
+    border: true
+
+  sidebar:
+    logo: "images/logo.png"
+    pinned: false
+    align: center
+
+    style: "docked"
+    search: true
+    collapse-level: 0
+    contents:
+      - section: "Metagenomics course"
+        contents: 
+        - 2. Intro-to-metagenomics.qmd
+        - 3. Intro-to-the-command-line.qmd
+        - 4. Accessing the command line.qmd
+        - 5. Exploring the shell environment.qmd
+        - 6. Installing tools with Conda.qmd
+        - 7. Sequencing-filetypes.qmd
+        - 8. Read Quality Control.qmd
+        - 9. For-loops.qmd
+        - 9.5. Paired-End-Data.qmd
+        - 10. Read vs Assembly based analyses.qmd
+        - 11. Read-based-taxonomic-classification.qmd
+        - 12. Assembly-based-analysis.qmd
+        - 13. Genome binning.qmd
+        - 14. Taxonomic classification and AMR gene detection of MAGs.qmd
+format:
+  html:
+    theme:
+      light: cosmo
+    code-copy: true
+    code-overflow: wrap
+    code-block-border-left: true
+    code-block-bg: true
+    css: styles.css
+    toc: true
+
+engine: knitr

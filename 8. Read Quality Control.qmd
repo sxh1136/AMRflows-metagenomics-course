@@ -1,0 +1,89 @@
+## 8. Running Your First Bioinformatics Tool - fastp
+In this section we will use our first bioinformatics tool, `fastp`. Before we start I want to repeat that the number one skill that you need to learn as a bioinformatian is to be able to read and understand software manuals. Manuals are available on the software's website or on their GitHub page. Step one of running a new tool is to always read the *entire* manual. Not reading the full manual leads to a lot of mistakes that waste computational time. If you run into any issues, the first time to do is to read the manual again. Programs often include a help section that is accessible on the command line. For the vast majority of the tools, you just type the name of the program followed by the flag `-h`, `--help`, or `-help`. This is very useful for refreshing our memory on what different flags are and what they do in that particular program.
+
+### Introducing fastp - Read Quality Control and Preprocessing 
+
+The tool fastp combines quality assessment and read processing, streamlining your analysis pipeline. There are also tools such as fastqc, prinseq, trimmomatic etc., but I have a preference for fastp because:
+
+* All-in-One: fastp performs both quality control and preprocessing tasks, reducing the need for multiple tools.
+
+* Speed: As the name suggests, fastp is designed for speed, making it efficient for processing large datasets.
+
+* Adapter Trimming: fastp also performs automatic adapter trimming and removes unwanted sequences from your reads.
+
+### Installing fastp
+
+Before we start we need to ensure that fastp is installed in your Conda environment. If not already done, activate the desired environment and install fastp using this command:
+
+```bash
+conda install -c bioconda fastp
+```
+
+You can also create a conda environment specifically for fastp to ensure there are no dependency clashes.
+
+```bash
+conda create --name fastp_env -c bioconda fastp
+conda activate fastp_env
+```
+
+With fastp installed, you're ready to assess the quality of your sequencing data.
+
+### Using fastp for Quality Control and Preprocessing
+
+Step 1: Prepare Your Data
+* Open a command line or terminal window.
+* Gather your raw sequencing data files and place them in a directory.
+
+Step 2: Run fastp
+* Run fastp with the following command (replace input.fastq and output.fastq with your filenames):
+
+```bash
+fastp -i input.fastq -o output.fastq -h output.html
+```
+
+fastp will analyze the data, generate a quality report in html format, and preprocess the reads into output.fastq.
+
+* Note: We'll go through how to run fastp on multiple files and on paired-end reads in later sections. 
+
+### Exploring fastp's Quality Control Reports
+As part of its functionality, fastp produces quality control reports that provide insight into the state of your data. The reports are generated in HTML format and can be viewed in a web browser.
+
+
+Open the HTML report in a web browser to explore key metrics:
+
+* Adapter content
+* Duplication rate
+* Total reads/bases before and after filtering
+* Read quality (Q20 and Q30) before and aftering filtering
+* GC ratio
+* Mean length
+  
+By default, fastp removes reads with over 40% of bases below a phred quality of 15. The phred quality threshold can be adjusted with the `-q` flag. It also automatically trims adaptor sequences by overlap analysis. If you know the adaptor sequence for your reads you can specify them after the `a` flag. fastp also has other features, such as global trimming, read deduplication, overrepresented sequence analysis, and read merging. Details of all of fastp's features and how to use the additonal modes can be found at: https://github.com/OpenGene/fastp
+
+For the majority of Illumina metagenomic reads, running through fastp's default settings will be sufficient for producing clean input data for downstream analysis. However, it is important to manually inspect the html output from fastp in order to spot any potential issues. 
+
+### Recap
+
+In this section, you've explored read quality control and preprocessing using the fastp tool. You've gained insights into installing fastp, running quality control and preprocessing, and interpreting quality reports. Now, it's time to apply this knowledge to your own metagenomic data.
+
+### Exercise
+
+* Activate your Conda environment.
+
+* Navigate to the directory containing your raw sequencing data files.
+
+* Run fastp on one fastq file.
+
+* Open and examine the generated fastp quality control report in a web browser.
+
+<details>
+<summary>Example code for exercise</summary>
+
+```bash
+conda activate fastp_env
+cd sequencing_data
+fastp -i input.fastq -o output.fastq -h output.html
+```
+</details>
+
+By incorporating fastp into your workflow, you've taken a important step towards ensuring accurate and reliable metagenomic analyses. In the next sections, we'll explore how to run fastp on multiple fastq files, as well as on paired-end data.

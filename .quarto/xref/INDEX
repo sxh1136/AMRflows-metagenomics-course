@@ -1,0 +1,77 @@
+{
+  "index.qmd": {
+    "index.html": "da5e7540"
+  },
+  "10. Metagenomic assembly.qmd": {
+    "10. Metagenomic assembly.html": "b28f31a8"
+  },
+  "11. Binning and MAG generation.qmd": {
+    "11. Binning and MAG generation.html": "604b33c9"
+  },
+  "12. Taxonomic and Functional Composition.qmd": {
+    "12. Taxonomic and Functional Composition.html": "d99f6a46"
+  },
+  "2. Intro-to-metagenomics.qmd": {
+    "2. Intro-to-metagenomics.html": "efc8a989"
+  },
+  "3. Intro-to-the-command-line.qmd": {
+    "3. Intro-to-the-command-line.html": "7e943946"
+  },
+  "4. Accessing the command line.qmd": {
+    "4. Accessing the command line.html": "c881af30"
+  },
+  "5. Exploring the shell environment.qmd": {
+    "5. Exploring the shell environment.html": "999c8f9f"
+  },
+  "6. Installing tools with Conda.qmd": {
+    "6. Installing tools with Conda.html": "c1b02339"
+  },
+  "7. Read Quality Control.qmd": {
+    "7. Read Quality Control.html": "d2713d93"
+  },
+  "8. Read vs Assembly based analyses.qmd": {
+    "8. Read vs Assembly based analyses.html": "b1eb7691"
+  },
+  "9. Diversity Metrics.qmd": {
+    "9. Diversity Metrics.html": "3a077ed9"
+  },
+  "10. Read vs Assembly based analyses.qmd": {
+    "10. Read vs Assembly based analyses.html": "ab972c9d"
+  },
+  "11. Metagenomic assembly.qmd": {
+    "11. Metagenomic assembly.html": "0ba38143"
+  },
+  "12. Binning and MAG generation.qmd": {
+    "12. Binning and MAG generation.html": "afa23ba1"
+  },
+  "13. Taxonomic and Functional Composition.qmd": {
+    "13. Taxonomic and Functional Composition.html": "64677df9"
+  },
+  "8. For-loops.qmd": {
+    "8. For-loops.html": "e9b35b7b"
+  },
+  "8. Read Quality Control.qmd": {
+    "8. Read Quality Control.html": "102048b5"
+  },
+  "11. Read-based-taxonomic-classification.qmd": {
+    "11. Read-based-taxonomic-classification.html": "ceea09d4"
+  },
+  "7. Sequencing-filetypes.qmd": {
+    "7. Sequencing-filetypes.html": "e7eb0e14"
+  },
+  "9. For-loops.qmd": {
+    "9. For-loops.html": "7096c04c"
+  },
+  "9.5. Paired-End-Data.qmd": {
+    "9.5. Paired-End-Data.html": "68a56dd4"
+  },
+  "12. Assembly-based-analysis.qmd": {
+    "12. Assembly-based-analysis.html": "a522642c"
+  },
+  "13. Genome binning.qmd": {
+    "13. Genome binning.html": "410a4760"
+  },
+  "14. Taxonomic classification and AMR gene detection of MAGs.qmd": {
+    "14. Taxonomic classification and AMR gene detection of MAGs.html": "66fce621"
+  }
+}

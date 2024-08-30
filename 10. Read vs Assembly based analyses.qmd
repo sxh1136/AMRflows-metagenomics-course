@@ -1,0 +1,73 @@
+## 10. Read vs. Assembly-Based Analysis of Metagenomic Data
+There are two main approaches to analyse metagenomic data - read based and assembly based. In most studies, reasearchers will use a combination of both approaches to provide a more comprehensive understanding of the metagenome. 
+
+### Read-Based Analysis
+Read-based analysis is a popular and straightforward method for metagenomic data analysis, especially when dealing with complex environmental samples. It involves the direct examination seqeuencing reads which offers several advantages:
+
+* Read-based analysis is generally faster since it doesn't require the computationally intensive assembly step.
+* It can detect rare microbial species, which may be missed in assembly-based approaches.
+* It is computationally less demanding and suitable for modest computing resources.
+
+#### Common steps in read-based analysis
+
+##### Taxonomic profiling
+* Reads are mapped to reference databases using tools such as MetaPhlAn, Kraken, or NCBI's BLAST to identify taxonomic affliations of each read. 
+* Abundance of different taxa are calculated based on the number of reads which align to the taxa's sequences. This quanitification is done automatically by tools like MetaPhlAn.
+
+##### Functional profiling
+* Reads can also be mapped to functional databases such as KEGG, COG, or Pfam, to infer their metabolic function. Abundance can be calculated in a similar fashion to taxonomy. Tools such as HUMAnN can functionally profile and quantiy abundance of microbial pathways automatically. 
+
+##### Differential Analysis
+* Tools such as DESeq2, edgeR, and LEfSe use statistical tests to identify taxonomic or functional differences between samples.
+
+#### Limitations of Read-Based Analyses
+* Read-based methods are limited by the read length, which can hinder the ability to accurately assign taxonomic or functional annotations to complex genomes or genes.
+* Read-based approaches rely on reference databases, potentially missing novel species or functions not present in the databases.
+* Estimating abundance from read counts can be challenging due to variations in genome sizes and biases in sequencing.
+
+### Assembly-Based Analysis
+Assembly-based analysis involves reconstructing longer genomic sequences (contigs) from metagenomic reads to obtain a more comprehensive view of the microbial community. This approach is particularly valuable when studying novel or less-characterized environments. Here are the key advantages:
+
+* It can provide much longer sequences and in some cases near-complete genomes of individual species within the community.
+* Long contigs allow for the prediction of functional genes and pathways with higher confidence.
+* It can uncover novel microbial species or functions not present in reference databases.
+
+#### Common Steps in Assembly-Based analysis
+
+##### Assembly
+As the name implies reads must be assembled (stitched) into contigs first. In metagenomics we use *de novo* assemblers, as we do not have prior knowledge of the composition of the input DNA. Two of the most commonly used metagenomic assemblers are metaSPAdes and MEGAHIT. Both of these are de Brujin graph based assemblers. What that entails exactly is far beyond the scope of this course but if you want to read more about that here's a great paper on the topic: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5531759/ (Beware: there's lots of maths).  
+
+##### Genome Binning
+* Contigs can be further grouped into clusters based on similarites in their sequence composition and coverage profiles. These bins are often referred to as metagenome-assembled-genomes (MAGs).
+* MAGs should then be assessed for completeness and contamination with a tool such as CheckM.
+
+##### Taxonomic Classification
+* Tools such as Kraken or GTDB-TK can be used to taxonomically classify contigs.
+* The original reads can be mapped to the contigs to estimate their abundance.
+
+##### Functional Classification
+* Coding sequences are first predicted by tools like Prodigal or MetaGeneMark.
+* The coding sequences are then annotated using the same databases used in read-based analysis.
+* Tools like Prokka, combine the two steps above for fast functional annotation of metagenomes.
+
+##### Differential Analysis
+* By mapping reads to the contig set, the same differential analysis performed in read-based analyses can be used (DESeq2, edgeR, and LefSe). This can help pinpoint microbial species or functions that play crucial roles in specific environments.   
+
+#### Limitations of Assembly-Based Analysis
+
+* Assembly-based approaches demand substantial computational resources and time, especially for large datasets.
+* Complex metagenomes may result in fragmented assemblies, limiting the ability to capture complete genomes.
+* Chimeric contigs, formed from multiple species, can sometimes be produced by assemblers leading to misinterpretations.
+* Not all reads will be assembled into contigs, especially those belonging to low abundance species.
+
+### Choosing the between read and assembly-based analysis
+
+The choice between read-based and assembly-based analysis depends on the goals of your study, the complexity of the metagenomic sample, and the available computational resources. 
+
+* Read-based analysis is typically used when you want to find the bulk taxonomic and/or functional compoisistion of your metagenome(s), and compare these compositions between samples/sites.
+
+* Assembly-based analysis is useful for when you want to find the functional potential of certain taxa in your samples, or for phylogenic analyses, or when you are interested in variants.  
+
+In practice, many researchers use a combination of both approaches to balance their benefits and limitations. In previous studies, I have utilised read-based analyses for taxonomic classification of my samples, and then used assembly-based analysis for identification of novel species, and characterising the functional potential of certain MAGs.
+
+In the next sections, we'll put what we have learnt about metagenomic analyses into practice.

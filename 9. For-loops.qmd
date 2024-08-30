@@ -1,0 +1,75 @@
+## 9. Automating read quality control with for loops
+Now that you've learned how to use fastp to perform read quality control and preprocessing on a single file, let's explore how to scale up your analysis to process multiple files efficiently. This is where the concept of "for loops" comes into play.
+
+A for loop is like a magical spell in coding. It allows you to repeat a sequence of commands for each item in a list, making it perfect for automating repetitive tasks, such as processing multiple read files. Think of it as a conveyor belt that moves each file through the fastp process one by one.
+
+### How to Use for Loops with fastp
+
+Step 1: Organize Your Files
+
+Before you start, make sure all your raw sequencing data files are in the same directory. This directory should contain all the files you want to process.
+
+Step 2: Writing the Loop
+
+Open a command line or terminal window and navigate to the directory where your files are located. Make sure you are in your fastp conda environment. Now, let's write a for loop to run fastp on all the files in the directory.
+
+```bash
+for file in *.fastq; do fastp -i ${file} -o processed_${file}; done
+```
+Lets break down what each part of the for loop does:
+
+* `for file in *.fastq`: This line tells the loop to go through each file with the ".fastq" extension in the current directory. The asterisk is a wildcard. This means that any string can come before ".fastq". 
+    
+* `do`: Marks the beginning of the loop.
+
+* `fastp -i ${file} -o processed_${file}`: This is the fastp command, just like the one you used before. `${file}` takes each file that we specified before (the ones that end in ".fastq") and places it into the fastp command. The output files will be named as the fastq file name with the prefix "processed_".
+
+* `done`: Marks the end of the loop.
+
+When you run this loop, it will automatically process each .fastq file in the directory, one after the other. You don't have to type the fastp command for each file manually. This is a huge time-saver, especially when you have many files to process.
+
+Note: You can replace "file" with any name you like; it's just a variable that represents each file in the list. For example the following for loop works identically:
+
+```bash
+for capybaras in *.fastq; do fastp -i ${capybaras} -o processed_${capybaras}; done
+```
+
+Its normally easier to use simple variables like "file" or just single letters like "f" or "i".
+
+You can use the `echo` command to see what commands the for loop is iterating. You place `echo` after the `do` and encase the command in quotes:
+
+```bash
+for file in *.fastq; do echo "fastp -i ${file} -o processed_${file}"; done
+```
+
+### Recap and Practice
+
+In this section, you've discovered the power of for loops in automating repetitive tasks, such as read quality control. You've learned how to use a simple for loop to apply the fastp command to multiple files at once, and you've used the echo command to keep track of the processing.
+
+Now, it's time to put your knowledge into practice:
+
+#### Exercise
+
+* Activate your fastp conda environment.
+
+* Navigate to the directory containing your raw sequencing data files.
+
+* Write a for loop like the ones above into your command line, using the variable name "f", echoing your fastp command, and name the fastp output with the prefix "fastp_".
+
+* If the echoed command looks correct, remove the echo and quotes and run the command.
+
+* Let the loop do its magic and process all your .fastq files automatically while displaying processing messages. This might take awhile.
+
+<details>
+<summary>Example code for exercise</summary>
+
+```bash
+conda activate fastp_env
+cd sequencing_data
+for file in *.fastq; do echo "fastp -i ${file} -o processed_${file}"; done
+```
+</details>
+
+Once the loop finishes, you'll have fastp outputs for each fastq with a "fastq_" prefix. Feel free to examine them and ensure that the quality control and preprocessing were successful.
+
+By mastering the use of for loops and customizing variable names, you've unlocked a powerful tool for automating data analysis in metagenomics. In the next section, we'll build on this for loop and use it to process paired end sequencing data. 

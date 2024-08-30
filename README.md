@@ -1,0 +1,3 @@
+This course is written using the Quarto framework - https://quarto.org/.
+
+Input into the Quarto framework is as Markdown files with the file extension .qmd. This is what each course section is written as. The front page of the website is detailed in index.qmd, which can also be used to render the entire website locally. Options for page style, theme and contents are stated in the _quarto.yml file. Publication of the course is currently done through github pages using the _publish.yml file. 

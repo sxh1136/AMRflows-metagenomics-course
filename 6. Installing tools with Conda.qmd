@@ -1,0 +1,154 @@
+## 5. Installing tools with Conda
+### The Power of Conda
+
+In the world of metagenomics, having the right tools at your disposal is crucial. Conda, short for Anaconda or Miniconda, is a powerful package manager and environment manager that simplifies the installation and management of bioinformatic tools. It's like having a toolbox filled with specialized instruments for your metagenomic projects.
+Why Conda?
+
+* Simplicity: Conda streamlines the process of installing and managing bioinformatics tools. You won't need to hunt for individual software packages and dependencies or worry about compatibility issues.
+
+* Isolation: Conda creates isolated environments for your projects, ensuring that different tools and their dependencies don't interfere with each other. It's like having separate workbenches for different experiments.
+
+* Cross-Platform: Conda works on Windows, macOS, and Linux, making it accessible to all users regardless of their operating system.
+
+### Installing Conda
+
+Before we dive into installing bioinformatic tools, let's ensure you have Conda set up on your system. Follow these steps:
+Step 1: Download Miniconda
+
+* Visit the Miniconda website (https://docs.conda.io/en/latest/miniconda.html).
+
+* Download the installer for your operating system (Windows, macOS, or Linux).
+
+* Run the installer and follow the on-screen instructions. You can choose to install it just for yourself or for all users on your system.
+
+Step 2: Test Your Installation
+
+To confirm that Conda is installed correctly, open a new command line or terminal window and type:
+
+```bash
+conda --version
+```
+
+You should see the Conda version number displayed. If you encounter any issues, refer to the Conda documentation for troubleshooting or send me an email.
+
+### Conda Environments
+
+One of the key benefits of Conda is the ability to create isolated environments for different projects. Each environment can have its own set of tools and dependencies without interfering with others.
+
+#### When to Create a New Environment
+
+The decision to create a new Conda environment depends on various factors:
+
+* Tool Compatibility: If you're working on different projects that require different versions of the same tool or conflicting dependencies, it's a good idea to create separate environments.
+
+* Project Isolation: Environments ensure that changes made for one project don't affect others. If you're collaborating with others or managing multiple research projects, isolate them in separate environments.
+
+* Dependency Management: Some tools may have specific dependencies or library requirements. Environments allow you to manage these dependencies independently.
+
+* Version Control: If you need to freeze the tool versions for a project to maintain consistency, you can do so within a Conda environment.
+
+#### Creating an Environment
+
+To create a Conda environment, use the following command, replacing myenv with your desired environment name:
+
+```bash
+conda create --name myenv
+```
+
+You can also specify the Python version by adding python=X.X to the command. This may be important for certain tools. For example, to create an environment with Python 3.8:
+
+```bash
+conda create --name myenv python=3.8
+```
+
+Activating and Deactivating Environments
+
+When you start a new project, you need to "activate" its workspace (Conda environment). It's like opening your toolbox for that specific project. To activate a conda environment you use the following command:
+
+```bash
+conda activate myenv
+```
+Replace `myenv` with the name of your project's workspace. Now, when you use commands, you're working within this special workspace with its own set of coding tools and libraries.
+
+In order to see what packages/tools have been install in the environment you are currently in, you can use:
+
+```bash
+conda list
+```
+
+You can also see a list of all your different conda environments by using:
+
+```bash
+conda env list
+```
+
+With the command above, the environment you are currently in will be marked with an asterisk (*).
+
+When you're done with a project or want to switch to another, you "deactivate" the current workspace. This is like closing your toolbox so that you don't accidentally mix up your tools. It's important to do this befor activating a different conda environment. Just type this:
+
+```bash
+conda deactivate
+```
+
+You'll be back to your regular, default workspace (called the base environment), where you can start a new project or do other tasks.
+
+#### Installing Bioinformatic Tools
+
+Now that you have Conda and understand how to manage environments, let's install some bioinformatic tools. 
+
+To install a bioinformatic tool, activate your desired Conda environment and use the conda install command. For example, to install the popular tool "fastp":
+
+https://github.com/OpenGene/fastp#fastp
+
+```bash
+conda activate myenv
+conda install -c bioconda fastp
+```
+Replace myenv with your environment name and adjust the tool name as needed.
+
+We use `-c bioconda` because we're telling conda to search the bioconda channel for the tool we're looking for. Channels are like marketplaces for software, and bioconda is dedicated to tools designed for bioinformaticians. This makes it easier for conda to find the specificied package. This information is normally found on the tools github page or on their anaconda page:
+
+https://anaconda.org/bioconda/fastp
+
+
+#### Updating Packages
+
+To keep your tools up to date, periodically update your Conda packages:
+
+```bash
+conda update --all
+```
+
+### Recap and Practice
+
+In this section, you've learned the power of Conda for managing bioinformatic tools. You've set up Conda on your system, created environments, and installed a tool. Now, practice installing other bioinformatic tools relevant to your metagenomics research.
+
+#### Exercise
+
+* Create a new directory for a different metagenomic project, and consider whether it needs its own Conda environment based on the factors mentioned earlier.
+
+* Activate the appropriate environment or create a new one if needed.
+
+* Install a bioinformatic tool related to your new project using Conda.
+
+* Verify that the tool is installed and operational within your environment.
+
+<details>
+<summary>Example code for exercise</summary>
+In this example I install a metagenomic assembler called spades as an example. More details about spades can be found at it's [github page](https://github.com/ablab/spades) but we will cover this tool later in the course.
+
+```bash
+cd 
+mkdir new_project
+conda deactivate
+conda create --name spades_env -c bioconda spades
+conda activate spades_env
+spades.py --version
+```
+</details>
+
+With Conda, you're now equipped to efficiently install and manage the tools you need for your metagenomic analyses. In the next section, we'll delve deeper into specific metagenomic tools and workflows.
+
+Extra reading:
+Mamba is a reimplementation of conda in C++. It is much faster at dependency solving and downloading of packages, and can be subsituted instead of Conda. We be won't be mentioning it any further in this course to avoid confusion but you can read more about it in the following link if you are [interested](
+https://github.com/mamba-org/mamba).

@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 8e7829cd-d9f2-4216-b307-66cc44f73968
+      url: 'https://sxh1136.quarto.pub/amrflows-metagenomic-data-analysis-course'

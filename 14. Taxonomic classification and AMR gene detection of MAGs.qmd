@@ -1,0 +1,18 @@
+## 13. Taxonomic classification of MAGs with GTDB-TK
+
+The Genome Taxonomy Database Toolkit (GTDB-Tk) is a powerful software toolkit designed to provide objective taxonomic classifications for bacterial and archaeal genomes, particularly those obtained from metagenomic datasets. GTDB-Tk leverages the Genome Taxonomy Database (GTDB) to classify metagenome-assembled genomes (MAGs) efficiently and accurately. GTDB-Tk can be installed via conda through the Bioconda channel. Documentation for GTDB-Tk can be found [here](https://ecogenomics.github.io/GTDBTk/). Note that GTDB-Tk requires a large reference dataset of around 110G. Once you have everything installed, try and run the `classify_wf` on the MAGs we created with MetaBat2. 
+
+After running GTDB-Tk, the following output files will be generated in the specified output directory:
+
+* classification_report.tsv: A tab-separated file containing the taxonomic classification of each genome, including the GTDB lineage.
+* marker_genes: Information about the identified marker genes, including their presence and the number of copies in each genome.
+* alignment_files: Files containing the aligned sequences of the marker genes used for classification
+* tree_files: Phylogenetic trees representing the placement of the classified genomes within the GTDB reference tree.
+
+The classify.tree file is in a file format called Newick, which can be visualised via a variety of programs such as ITOL - an in-browser phylogeny viewer or simple to use tools such as FigTree or TreeViewer.
+
+## 13. Antimicrobial resistance gene detection in MAGs with AMRFinderPlus
+A common aim of metagenomic studies is to identify the presence of AMR genes and the context in which they are encoded. AMRFinderPlus is a powerful tool developed by the National Center for Biotechnology Information (NCBI) designed to identify antimicrobial resistance (AMR) genes, resistance-associated point mutations, as well certain other virulence factors. AMRFinderPlus utilizes a curated Reference Gene Database and a collection of Hidden Markov Models (HMMs) to accurately identify AMR genes and their associated functions. More details can be found on their [github wiki](https://github.com/ncbi/amr/wiki). Install AMRFinderPlus with conda and run the tool on our MAGs FASTA file. The output of the tool is a tab separated file (.tsv). An example of this output can be found on the github wiki page. Important columns to look out for are the `% Coverage of reference sequence` and the `% Identity to reference sequence`. If these %s are notably low, they may suggest that the gene prediction is of low confidence. 
+
+Note that AMRFinderPlus relies on a curated database that is regularly updated. It is possible that an AMR gene is present in your MAGs but not identified due to its absence from the database due to its novelty. Furthermore, the presence of an AMR gene within a genome is not a confirmation of its phenotypic resistance. Many AMR proteins may reduce an organisms suspectibility to an antimicrobial but not cross clinical breakpoints, or may provide no resistance at all due to mutations. Validation of detected AMR genes should be done through experimental methods.
+

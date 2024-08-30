@@ -1,0 +1,35 @@
+---
+title:  AMRFlows Metagenomic Data Analysis Course
+---
+
+
+<style type="text/css">
+
+h1.title {
+  font-size: 38px;
+  color: Black;
+  text-align: center;
+}
+</style>
+
+
+## Course Overview
+This course will cover the bioinformatics workflow from the point of raw metagenomic sequencing data. You **do not** need prior bioinformatics experience to utilise this course.
+
+In this course we'll be covering the following topics:
+
+* What is metagenomics?
+* Why do we want to do metagenomics?
+* What is Unix/bash, and why do we use it?
+* What software to use for bash command line?
+* How to navigate the command line interface.
+* What is Conda and why do we use it to install tools?
+* Basics of Illumina sequencing.
+* Common sequence file types.
+* Read quality control.
+* Read-based analyses.
+  * Tools for taxonomic and functional composition.
+* Metagenomic assembly and analyses.
+  * Binning and MAG generation
+
+Don't worry if some/most of these concepts are foreign to you, as we'll be going through each topic thoroughly. You'll also be able to work through the content at your own pace. Throughout each topic, there will also be exercises to test if you've understood the content.

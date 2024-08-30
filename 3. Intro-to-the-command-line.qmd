@@ -1,0 +1,41 @@
+## 2. What is the Command Line?
+
+In the world of metagenomics, data analysis is a **critical** component of unraveling complex microbial communities. To use bioinformatics tools and perform analyses, researchers often rely on a fundamental tool known as the **command line**. The command line, sometimes referred to as the terminal or shell, is a text-based interface that allows users to interact with a computer's operating system and execute a wide range of tasks, including data manipulation, file management, and running specialized bioinformatics software.
+
+#### The Text-Based Interface
+
+Unlike the graphical user interfaces (GUIs) most of us are familiar with, where we interact with programs using windows, icons, and menus, the command line operates purely through **text commands**. Users type specific commands, often in the form of text strings, into a terminal window, and the computer responds with text-based output. This text-based interface may seem intimidating at first, especially to those new to bioinformatics, but it offers **significant advantages** for metagenomic analysis.
+
+#### Shells - Gateway to the Command Line
+
+The command line environment is facilitated by software programs called shells. A shell is essentially a command interpreter that acts as an intermediary between the user and the computer's operating system. It takes your text-based commands, translates them into instructions the computer can understand, and then executes those instructions.
+
+One of the most widely used shells in the world of bioinformatics and beyond is Bash (short for "Bourne Again Shell"). Bash is known for its power, flexibility, and extensive support for scripting, making it a favorite among researchers and data analysts. Throughout this course, we'll primarily use the Bash shell to introduce you to the command line.
+
+### Key Advantages of the Command Line in Metagenomics
+
+* **Efficiency**: The command line allows for precise and efficient control over your computer. You can perform complex tasks quickly by executing a series of commands in a script or by using one-liners, which can be especially beneficial when handling large metagenomic datasets.
+
+* **Reproducibility**: Scripts and command sequences can be saved and shared, ensuring that your analyses are reproducible by you and others. This is crucial in scientific research, as it promotes transparency and the verification of results.
+
+* **Access to Powerful Tools**: Many bioinformatics tools and software packages are designed to be used via the command line. These tools offer advanced capabilities for processing, aligning, and analyzing metagenomic data that may not be easily accessible through graphical interfaces.
+
+* **Remote Computing**: In metagenomics, you often deal with substantial datasets that require significant computational resources. Command line access to remote servers or high-performance computing clusters allows you to analyze data without overloading your local machine.
+
+* **Customization**: Command line interfaces offer a high degree of customization. Users can create scripts and workflows tailored to their specific research needs, enabling flexibility in metagenomic analysis.
+
+### Getting Started
+
+For those new to the command line, it may seem like learning a new language. However, it is a skill that can be acquired with **practice**. In this course, we will introduce you to the command line, with a focus on the Bash shell, and guide you through its basic commands and metagenomics-specific tools. However, I recommend go through one of the many free introduction to **command line courses**, as they're be able to cover things more comprehensively. You should be able to complete this course without going through one of these external courses, but we will be going though the basics quite quickly so you may find it difficult if you are new to bioinformatics. 
+
+The course that I used to learn the command line was "Learn the command line" by **Codeacademy**. Codeacademy's courses include an actual command line interface that you can interact with and test commands in. Unfortuately, it is not a free course anymore, but you can sign up for a 7 day free trial. Completing the first three modules should be more than enough to get familiar with the command line.
+
+[Code Academy Course](https://www.codecademy.com/enrolled/courses/learn-the-command-line)
+
+Another course that I've heard good things about is the Udemy "Learn The Linux Command Line: Basic Commands" course. Best of all, its free!
+
+[Udemy Course](https://www.udemy.com/course/command-line/?LSNPUBID=JVFxdTr9V80&ranEAID=JVFxdTr9V80&ranMID=39197&ranSiteID=JVFxdTr9V80-Gp2cG_GW6GCqv42CD9RXmg&utm_medium=udemyads&utm_source=aff-campaign)
+
+If you complete either of these courses, you can probably skip the sections "Accessing the command line", "Exploring the shell environment", and "For loops"!
+
+In the next section, we'll start with the essentials: how to open a terminal, navigate the file system, and begin using Bash commands. So, let's begin our journey into the world of metagenomic data analysis using the command line and the powerful Bash shell!

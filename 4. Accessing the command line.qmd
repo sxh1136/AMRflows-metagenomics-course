@@ -1,0 +1,73 @@
+## 3. Accessing the Command Line
+
+Before we dive into metagenomic analysis using the command line, it's important to know how to access this powerful tool. The method you use to access the command line can **vary** depending on your operating system. The vast majority of bioinfomatics software is written for **Unix** systems (e.g. Linux, MacOS). However, we can emulate a Unix-like shell for Windows. Alternatively, many researchers connect to **servers** to carry out their analysis as everyone's computer, operating system, and available processing power is different. Servers are simply computers that are remotely accessed. Your university may have their own dedicated servers or you may be able to hire one. Here, we'll cover the most common methods to access the command line for Windows, macOS, and Linux users. Using these, you'll be able to carry out bioifnormatic analyses directly or connect to external servers. For the latter, I recommend reaching out to the administrators of your server for more information on how to connect. 
+
+### For Windows Users
+
+**Git Bash**
+
+This is my preferred windows terminal experience, and you can download and use Git Bash from the [official Git website](https://git-scm.com/). Git Bash combines the power of the Bash shell with Git commands, making it a versatile choice for command line tasks. There are alternatives such as Windows Terminal but I have limited experience with them.
+
+### For Mac Users
+
+**Terminal**
+
+Terminal is included in Mac installations by default. You can open it by:
+* Press `Command + Spacebar` to open Spotlight Search.
+* Type Terminal and press Enter: This will open the Terminal application.
+
+
+* You can also right click the desktop and open "Terminal".
+
+### For Linux Users
+
+**Terminal**
+
+Terminal is included in Linux distributions by default. 
+* Most Linux distributions have a keyboard shortcut to open the terminal. Common shortcuts include `Ctrl + Alt + T` or `Windows key + T`.
+
+* Alternatively, right click desktop, and open "Terminal"
+
+## Introduction to Bash
+
+As mentioned in the previous section, we will be using the Bash shell throughout this course for our command line interactions. Bash is the default shell for most Linux distributions and is also available for Windows via Git Bash. MacOS uses Z shell which is built on Bash and should behave almost **identically**.
+
+### Why Bash?
+
+* **Compatibility**: Bash is widely supported across different operating systems, making it a good choice for cross-platform work.
+
+* **Scripting**: Bash is a powerful scripting language, allowing you to automate tasks and create reusable scripts for your metagenomic analyses.
+
+* **Documentation**: Bash has a large and active user community, which means you can easily find help and resources online.
+
+### Let's Test the Waters
+
+Let's make sure you're all set to start this adventure. We'll do a quick test to make sure your Command Line is up and running.
+
+Open your Command Line or Terminal using the method that suits your computer (Command Prompt, Git Bash, Terminal, or equivalent).
+
+Now, in the window that just opened, type this and press enter:
+
+```bash
+echo "Hello, Command Line!"
+```
+
+Did you see a friendly "Hello, Command Line!" response? If yes, great job! You're ready to roll.
+
+### Navigating the File System
+
+Before we start using advanced commands, let's get comfortable with navigating the file system using the command line. In your terminal, you can use commands like `ls` (list files), `cd` (change directory), and `pwd` (print working directory) to explore your computer's file structure. 
+
+* Note that what we typically call folders are called directories on the command line.
+
+Exercise
+
+* Type `ls` and press Enter. This will show you what's in your current location (directory).
+
+* Now, type `cd` followed by a folder name (e.g., cd Documents) and press Enter. You've now moved into that folder.
+
+* To find out where you are now, type `pwd` and press Enter. It's like checking your GPS location.
+
+Now that you know how to access the command line and navigate the file system, you're ready to start using the Bash shell for metagenomic analysis. In the next section, we'll explore some basic Bash commands and how to perform common file operations.
+
+

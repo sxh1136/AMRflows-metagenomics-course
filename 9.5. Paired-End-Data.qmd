@@ -1,0 +1,69 @@
+## 9.5. Processing Paired-End Data with for Loops
+
+In metagenomics, you often work with paired-end sequencing data, where each sample consists of two separate FASTQ files—one for forward reads and one for reverse reads. Fortunately, fastp can handle paired-end data efficiently when used in combination with for loops. Let's dive into how you can set up and execute for loops for paired-end data, making use of variable string substitution.
+
+### Preparing Paired-End Data
+
+Before we start, ensure that your paired-end FASTQ files are organized correctly. You should have a directory containing pairs of files, with one file for forward reads and another for reverse reads for each sample. The filenames should ideally follow a pattern to simplify automation. For example a set of pair reads would be named:
+
+* amrfA1_R1.fastq
+* amrfA1_R2.fastq
+
+### Using for Loops for Paired-End Data
+
+To process paired-end data with fastp using for loops, you'll need to set up a loop that iterates over both the forward and reverse reads simultaneously. Here's an example of how to do it:
+
+```bash
+for r in *_R1.fastq; do fastp -i ${r} -I ${r/R1/R2} -o ${r/R1.fastq/processed_R1.fastq} -O ${r/R1.fastq/processed_R2.fastq} -h ${r/R1.fastq/fastp.html};done
+```
+
+Note that we use variable/parameter substitution here to change our variable `r` which contains the name of the forward read into the name of the reverse read. This works as follows:
+
+`${parameter/pattern/replacement}`
+
+So if the parameter `r` represented amrfA1_R1.fastq the substitution `${r/R1/R2}` would replace the pattern `R1` with `R2`, resulting in amrfA1_R2.fastq.
+
+Let's break down what each part of the loop does:
+
+`for r in *_R1.fastq`: This line iterates through all files in the current directory that end with "_R1.fastq," representing the forward reads.
+`do fastp`: This starts the for loop for fastp.
+`-i ${r}`: This inputs the files that end in "_R1.fastq" into fastp.
+`-I ${r/R1/R2}`: This line constructs the filename for the reverse reads by substituting "R1" with "R2" in the forward read variable.
+`-o ${r/R1.fastq/processed_R1.fastq}`: This line names the processed output forward reads by replacing the "R1.fastq" string from the forward read filename with "procressed_R1.fastq"
+`-O ${r/R1.fastq/processed_R2.fastq}`: This line names the processed output reverse reads by replacing the "R1.fastq" string from the forward read filename with "processed_R2.fastq"
+`-h ${r/R1.fastq/fastp.html}`: This line names the output html file by replacing the "R1.fastq" string from the forward read filename with "fastp.html"
+`done`: Ends the for loop.
+
+When you run this loop, it will automatically process each pair of forward and reverse reads in a single command. If we echo the above command, assuming `amrfA1_R1.fastq` and `amrfA1_R2.fastq` are the only files in our current directory, the output would be:
+
+```bash
+fastp -i amrfA1_R1.fastq -I amrfA1_R2.fastq -o amrfA1_processed_R1.fastq -O amrfA1_processed_R2.fastq -h amrfA1_fastp.html
+```
+
+Of course, just running the command above would get us the same result, but imagine doing this for hundreds of paired reads. For loops allow us to do this all in one command, instead of writing code for every set of paired reads. 
+
+### Recap and Practice
+
+In this section, you've learned how to use for loops with fastp to efficiently process paired-end sequencing data. Variable string substitution allows you to create dynamic filenames and automate the handling of both forward and reverse reads.
+
+Exercise: Process Paired-End Data
+
+* Activate your Conda environment.
+* Navigate to the directory containing your paired-end sequencing data files.
+* Write a for loop like those provided above into your command line.
+* Run the loop to process both forward and reverse reads.
+* Examine the processed files, ensuring that the quality control and preprocessing were successful.
+
+<details>
+<summary>Example code for exercise</summary>
+
+```bash
+conda activate fastp_env
+cd sequencing_data
+for r in *_R1.fastq; do fastp -i ${r} -I ${r/R1/R2} -o ${r/R1.fastq/processed_R1.fastq} -O ${r/R1.fastq/processed_R2.fastq} -h ${r/R1.fastq/fastp.html};done
+```
+</details>
+
+By mastering the use of for loops and variable string substitution, you're equipped to tackle paired-end data efficiently in your metagenomic analyses. There are other ways to manipulate variable strings in Bash, but substitution is by far the most used. If you want to read about other types of variable manipulation/expansion this wiki has a great table of various tricks:
+
+https://mywiki.wooledge.org/BashGuide/Parameters#Parameter_Expansion

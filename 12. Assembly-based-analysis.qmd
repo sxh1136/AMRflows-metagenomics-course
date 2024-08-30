@@ -1,0 +1,46 @@
+## 12. Metagenomic assembly with MegaHit
+
+Previously, we discussed the concept of assembly-based analysis of metagenomic data. In this section we will be beginning our assembly based journey by learning, well you guessed it, metagenomic assembly! This method is particularly beneficial for studying communities in complex environments, as it allows us to delve much deeper into the genetic and functional potential of the organisms within than read-based analysis.
+
+In the following sections, I won't be explictly giving you example code like I have done previously. Try and follow the github manuals for the tools and if you get stuck or confused, google is your friend. Solving these issues is an important skill to learn. I believe in you!
+
+### Assembly-Based Analysis with MEGAHIT
+MEGAHIT is a popular de novo assembler widely used in metagenomic studies due to its efficiency in handling large datasets and complex metagenomes. MEGAHIT is available for download from the official GitHub repository: https://github.com/voutcn/megahit. Try and follow the instructions to install the tool via conda. 
+
+To run MEGAHIT, you will need to provide the input sequencing reads in FASTQ format. MEGAHIT supports both single-end and paired-end reads. Try and write a basic command for assembling your paired end reads. Leave any optional parameters as default. This will typically be the case for most datasets. Remember you can see the all of the flags for MEGAHIT by running `megahit -h`. 
+
+Now that you've successfully run MEGAHIT, you'll have some new files to look at within your specified output directory. The main output file of MEGAHIT is *final.contigs.fa*. 
+
+Look inside *final.contigs.fa*. 
+
+Can you tell the difference between this file and the reads you inputted?
+
+### Evaluating Assembly Quality with QUAST
+
+Now that we have our assembled contigs, it would be useful to get an idea of the quality of the assembly. One commonly used tool for this is QUAST, which stands for Quality Assessment Tool for Genome Assemblies. QUAST generates various metrics for evaluating the quality of an assembly and can be run with or without references. As we are looking at metagenomes from a complex environment, we will be running QUAST without any reference genomes. Installation and usage of QUAST is detailed on their sourceforge website: https://quast.sourceforge.net/index.html. 
+
+Write a command for running QUAST on *final.contigs.fa* with an output directory named *megahit_quast-output*. Keep other options as default for now.
+
+QUAST generates a lot of output files and a description of what each of them are can be found within the QUAST manual on their sourceforge page. For us, the most important is the *report.txt* file you can find within *megahit_quast-output*. The key metrics that are contained within this file are:
+
+* Total number of contigs is the total number of contigs in the assembly. A higher number of contigs may suggest a less contiguous assembly.
+* Largest contig is the length of the longest contig in the assembly. Longer contigs are generally preferred as they indicate better assembly quality.
+* Total length is the total number of bases in the assembly.
+* N50 is the length of the shortest contig in the set that contains the fewest (largest) contigs whose combined length represents at least 50% of the assembly.
+* L50 is the number of contigs that make up the N50.
+* GC Content is the percentage of guanine and cytosine in the assembly. This can provide insights into the composition and potential biases in the sequencing data.
+
+When evaluating the results of QUAST, there are a few specific red flags may indicate potential issues:
+
+* High Number of Contigs:
+    An excessive number of contigs relative to the expected complexity of the metagenome may suggest fragmentation. In metagenomic studies, a large number of contigs can be expected, but excessively high numbers could indicate poor assembly.
+* Low N50 Value:
+    A low N50 suggests that the assembly is highly fragmented, which can hinder the identification of complete genomes or operons, especially in diverse microbial communities.
+* Total Length Discrepancy:
+    If the total length of the assembly is significantly shorter than expected based on the input data or the known diversity of the community, it may indicate missing sequences or poor assembly.
+
+Of course, whether these metrics are indicative of potential issues is completely dependent on the type of sample you sequenced and the nature of your experiment. It is therefore impossible to have concrete numbers for when these metrics represent issues, but they are important to keep in mind which is why we have covered them here. 
+
+
+
+
